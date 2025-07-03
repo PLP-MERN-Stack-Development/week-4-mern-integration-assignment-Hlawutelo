@@ -1,163 +1,119 @@
-# MERN Stack Integration Assignment
+# MERN Blog Application
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+## What is this project?
 
-## Assignment Overview
+This is a full-stack blog platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to register, log in, create and manage blog posts, upload images, comment on posts, and browse content with pagination, search, and filtering. The project demonstrates how to build a modern web application with seamless integration between front-end and back-end components.
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+## Key Features
+
+- User registration and login (JWT authentication)
+- Create, read, update, and delete blog posts
+- Upload and display featured images for posts
+- Add and view comments on blog posts
+- Organize posts by categories
+- Paginated, searchable, and filterable post list
+- RESTful API with input validation and centralized error handling
 
 ## Project Structure
 
 ```
 mern-blog/
 ├── client/                 # React front-end
-│   ├── public/             # Static files for React app
-│   ├── src/                # Main React source code
-│   │   ├── components/     # Reusable UI components (buttons, forms, etc.)
-│   │   ├── pages/          # Page-level components (PostList, Login, Register, etc.)
-│   │   ├── hooks/          # Custom React hooks for logic reuse
-│   │   ├── services/       # API service functions for HTTP requests
-│   │   ├── context/        # React context providers (e.g., AuthContext)
-│   │   └── App.jsx         # Main application entry point
-│   └── package.json        # Front-end dependencies and scripts
-├── server/                 # Express.js and Node.js back-end
-│   ├── models/             # Mongoose models for MongoDB (User, Post, Category)
-│   ├── routes/             # Express route handlers for API endpoints
-│   ├── middleware/         # Custom middleware (auth, error handling, uploads)
-│   ├── server.js           # Main server file (entry point for API)
-│   └── package.json        # Back-end dependencies and scripts
-└── README.md               # Project documentation (this file)
+│   ├── public/             # Static files
+│   ├── src/                # React source code
+│   │   ├── components/     # Reusable components (e.g., Comments)
+│   │   ├── pages/          # Page components (PostList, SinglePost, etc.)
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── services/       # API services (axios)
+│   │   ├── context/        # React context providers (Auth)
+│   │   └── AppRouter.jsx   # Main application router
+│   └── package.json        # Client dependencies
+├── server/                 # Express.js back-end
+│   ├── config/             # Configuration files
+│   ├── controllers/        # Route controllers
+│   ├── models/             # Mongoose models (Post, Category, Comment, User)
+│   ├── routes/             # API routes (posts, categories, comments, auth)
+│   ├── middleware/         # Custom middleware (error handler, upload)
+│   ├── utils/              # Utility functions
+│   ├── server.js           # Main server file
+│   └── package.json        # Server dependencies
+└── README.md               # Project documentation
 ```
 
-## Getting Started
-
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
-
-## Files Included
-
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
-
-## Requirements
-
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
-
-## Resources
-
-# MERN Blog Application
-
-A full-stack blog platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js). This project demonstrates CRUD operations, authentication, image uploads, pagination, search/filter, and comments.
-
----
-
-## Features
-
-- **User Authentication**: Register, login, and JWT-protected routes
-- **Blog Posts**: Create, read, update, delete posts
-- **Image Uploads**: Upload and serve featured images for posts
-- **Pagination & Search**: Paginated post listing, search by title/content, filter by category
-- **Categories**: Organize posts by category
-- **Comments**: (Planned) Add and view comments on posts
-- **RESTful API**: Well-structured endpoints for all resources
-- **Error Handling**: Centralized error responses
-
----
-
-## Project Structure
-
-```
-client/           # React front-end
-  src/
-    context/      # Auth context
-    pages/        # Page components (Login, Register, PostList, etc.)
-    services/     # API calls
-    App.jsx       # Main app
-server/           # Express.js back-end
-  models/         # Mongoose models (User, Post, Category)
-  routes/         # API routes
-  middleware/     # Multer, auth, error handling
-  server.js       # Main server file
-```
-
----
-
-## Getting Started
+## How to Use This Project
 
 ### Prerequisites
-- Node.js v18+
+- Node.js and npm
 - MongoDB (local or Atlas)
-- npm or yarn
 
-### Setup
+### Setup & Installation
+1. **Clone the repository:**
+   ```sh
+   git clone <repo-url>
+   cd mern-blog
+   ```
+2. **Install server dependencies:**
+   ```sh
+   cd server
+   npm install
+   ```
+3. **Install client dependencies:**
+   ```sh
+   cd ../client
+   npm install
+   ```
+4. **Set up environment variables:**
+   - In `server/`, create a `.env` file:
+     ```env
+     MONGODB_URI=your_mongodb_connection_string
+     JWT_SECRET=your_jwt_secret
+     PORT=5000
+     NODE_ENV=development
+     ```
+   - Optionally, in `client/`, create a `.env` file for `VITE_API_URL`.
 
-1. **Clone the repository**
-2. **Install dependencies**
-   - In `/client`: `npm install`
-   - In `/server`: `npm install`
-3. **Configure environment variables**
-   - Copy `.env.example` to `.env` in both `/client` and `/server` and fill in values
-4. **Start the servers**
-   - In `/server`: `npm start` (or `npm run dev` for development)
-   - In `/client`: `npm run dev`
-5. **Access the app**
-   - Frontend: [http://localhost:3000](http://localhost:3000)
-   - Backend API: [http://localhost:5000/api](http://localhost:5000/api)
+### Running the Application
+- **Start the server:**
+  ```sh
+  cd server
+  npm start
+  ```
+- **Start the client:**
+  ```sh
+  cd client
+  npm run dev
+  ```
+- Open your browser to `http://localhost:5173` (or as shown in your terminal).
 
----
+### Using the App
+1. Register a new user or log in with existing credentials.
+2. Create, edit, or delete blog posts (with optional image upload).
+3. Browse posts, search by keyword, or filter by category.
+4. View a single post and add comments.
+5. Manage categories and explore posts by category.
 
 ## API Endpoints
 
-- `POST /api/auth/register` — Register a new user
-- `POST /api/auth/login` — Login and receive JWT
-- `GET /api/posts` — List posts (supports `page`, `limit`, `search`, `category`)
-- `POST /api/posts` — Create post (auth required, supports image upload)
-- `PUT /api/posts/:id` — Update post (auth required)
-- `DELETE /api/posts/:id` — Delete post (auth required)
-- `GET /api/categories` — List categories
-- `POST /api/categories` — Create category (auth required)
+### Posts
+- `GET /api/posts` - Get all posts (supports pagination, search, filter)
+- `GET /api/posts/:id` - Get a single post
+- `POST /api/posts` - Create a new post
+- `PUT /api/posts/:id` - Update a post
+- `DELETE /api/posts/:id` - Delete a post
 
----
+### Categories
+- `GET /api/categories` - Get all categories
+- `POST /api/categories` - Create a new category
 
-## Testing
+### Comments
+- `GET /api/comments/:postId` - Get all comments for a post
+- `POST /api/comments/:postId` - Add a comment to a post
+- `DELETE /api/comments/:commentId` - Delete a comment
 
-- Use [Postman](https://www.postman.com/) or similar tool to test API endpoints
-- For image upload, use `form-data` with a `file` field
-- Test authentication by including the JWT token in the `Authorization` header
-
----
-
-## Screenshots
-
-Include screenshots of your working app here (login, post list, create post, etc.)
-
----
-
-## Resources
-- [MongoDB Docs](https://docs.mongodb.com/)
-- [Express.js Docs](https://expressjs.com/)
-- [React Docs](https://react.dev/)
-- [Node.js Docs](https://nodejs.org/en/docs/)
-- [Mongoose Docs](https://mongoosejs.com/docs/)
-
----
+### Auth
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login
 
 ## License
-MIT
+
+This project is for educational and demonstration purposes.
