@@ -11,6 +11,7 @@ const path = require('path');
 const postRoutes = require('./routes/posts');
 const categoryRoutes = require('./routes/categories');
 const authRoutes = require('./routes/auth');
+const commentRoutes = require('./routes/comments');
 
 // Load environment variables
 dotenv.config();
@@ -36,8 +37,21 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // API routes
+app.use('/api/categories', categoryRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/auth', authRoutes);
+
+// Centralized error handler
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
 app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/comments', commentRoutes);
+
+// Centralized error handler
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
 app.use('/api/auth', authRoutes);
 
 // Root route
@@ -75,4 +89,4 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-module.exports = app; 
+module.exports = app;
